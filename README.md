@@ -63,7 +63,71 @@ All task endpoints are protected with Bearer JWT tokens.
 
 ---
 
-## 💻 How to Run Locally
+## 🖥️ How to Run in Visual Studio Code (VS Code)
+
+### Step 1: Open the Project in VS Code
+1. Launch **Visual Studio Code**.
+2. Go to **File** > **Open Folder...** (or press `Ctrl + K, Ctrl + O`).
+3. Select the `TaskBoard` folder.
+
+---
+
+### Step 2: Open the Integrated Terminal
+- Press **`Ctrl + \``** (backtick) or select **Terminal** > **New Terminal** from the top menu.
+
+---
+
+### Step 3: Run the Development Servers
+You can run both servers side-by-side using VS Code's **Split Terminal** feature:
+
+#### Terminal 1 — Start Backend Server:
+```bash
+cd backend
+npm run dev
+```
+*(On Windows PowerShell, if you see a script execution policy notice, use `npm.cmd run dev`)*
+> 🚀 You will see: `TaskBoard REST API server listening on http://localhost:5000`
+
+#### Terminal 2 — Start Frontend Server:
+1. Click the **Split Terminal** button (`Ctrl + Shift + 5` or the ◫ icon in the top-right corner of the terminal pane).
+2. Run:
+```bash
+cd frontend
+npm run dev
+```
+*(Or `npm.cmd run dev` on Windows PowerShell)*
+> ⚡ You will see: `Local: http://localhost:3000/`
+
+---
+
+### Step 4: Open the App & Test
+1. Hold `Ctrl` and click **`http://localhost:3000`** in the terminal (or open it in your browser).
+2. The 3D TaskBoard app will load.
+3. Click the **"Fill Demo Login"** button or enter:
+   - **Email**: `demo@taskboard.com`
+   - **Password**: `Demo@123`
+4. Click **Log in** to explore your pre-seeded 3D tasks!
+
+---
+
+### 💡 Alternative: Run via VS Code Tasks (Automated)
+This repository includes pre-configured `.vscode` tasks:
+1. Press `Ctrl + Shift + P` and type `Tasks: Run Task`.
+2. Select **`Start Backend`** to start the API in the background.
+3. Select **`Start Frontend`** to start Vite in the background.
+4. Select **`Run Backend Tests`** (`Ctrl + Shift + T` or test menu) to run the 16 automated test suites anytime.
+
+---
+
+### 🐞 Debugging with VS Code
+1. Click the **Run and Debug** tab on the left sidebar (or press `Ctrl + Shift + D`).
+2. Select **"Debug Backend API"** from the dropdown at the top.
+3. Press **`F5`** or click the green Play button.
+4. Set breakpoints directly in [taskController.js](file:///c:/Users/dhanush%20gopi/Downloads/TaskBoard/backend/src/controllers/taskController.js) or [authController.js](file:///c:/Users/dhanush%20gopi/Downloads/TaskBoard/backend/src/controllers/authController.js) to debug live API calls!
+
+---
+
+## 💻 How to Run Locally (Command Line)
 
 ### Prerequisites
 - Node.js v18+ or v20+ or v22+
@@ -185,3 +249,4 @@ The codebase is cleanly organized for the follow-up live coding walkthrough (e.g
 2. **Controller** (`backend/src/controllers/taskController.js`): accept `category` in `createTask` and `updateTask`.
 3. **Frontend Modal** (`frontend/src/components/TaskModal3D.jsx`): add a category dropdown or input pill.
 4. **Task Card** (`frontend/src/components/TaskItem3D.jsx`): render a category badge alongside priority.
+
