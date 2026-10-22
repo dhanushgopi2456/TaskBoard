@@ -1,0 +1,34 @@
+{
+  "name": "taskboard-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TaskBoard REST API Backend",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "cross-env NODE_ENV=test node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --detectOpenHandles"
+  },
+  "keywords": [
+    "taskboard",
+    "todo",
+    "express",
+    "rest-api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.17.2"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.3.0",
+    "supertest": "^7.2.2"
+  }
+}

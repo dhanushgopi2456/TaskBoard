@@ -1,0 +1,22 @@
+{
+  "name": "taskboard-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TaskBoard — 3D Animated Full-Stack Task Manager",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "test": "cd backend && npm test",
+    "build": "cd frontend && npm run build",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": [
+    "taskboard",
+    "fullstack",
+    "3d",
+    "threejs",
+    "framer-motion",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT"
+}
