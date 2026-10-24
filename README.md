@@ -41,6 +41,9 @@
   <a href="#api-endpoints">
     <img src="https://img.shields.io/badge/API_Endpoints-EA580C?style=for-the-badge" alt="API Endpoints"/>
   </a>
+ <a href="#run-locally">
+  <img src="https://img.shields.io/badge/▶️_Run_Locally-16A34A?style=for-the-badge" alt="Run Locally"/>
+ </a>
   <a href="#deployment">
     <img src="https://img.shields.io/badge/Deployment-0F766E?style=for-the-badge" alt="Deployment"/>
   </a>
@@ -189,7 +192,7 @@ Task endpoints require a valid Bearer JWT token.
 - `sort`: `due_date`, `priority`, `newest`
 
 ---
-
+<a id="run-locally"></a>
 ## 🖥️ How to Run in Visual Studio Code (VS Code)
 
 ### Step 1: Open the project
