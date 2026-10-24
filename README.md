@@ -13,8 +13,6 @@
   <img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js Express" />
 </p>
 
-# 🚀 TaskBoard — 3D Spatial Task Manager
-
 > A modern, responsive, animated 3D task manager built with React, Three.js, Framer Motion, Node.js/Express, and PostgreSQL/SQLite.
 
 <p align="center">
