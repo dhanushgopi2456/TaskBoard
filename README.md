@@ -60,7 +60,7 @@ You can also click **Fill Demo Login** on the login screen for one-click evaluat
 - **Responsive Layout:** Designed for mobile and desktop screens.
 
 ---
-
+<a id=system-architecture></a>
 ## 🏗️ System Architecture
 
 ```mermaid
