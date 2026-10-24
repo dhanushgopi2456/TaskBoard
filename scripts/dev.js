@@ -40,3 +40,4 @@ const cleanExit = () => {
 
 process.on('SIGINT', cleanExit);
 process.on('SIGTERM', cleanExit);
+
