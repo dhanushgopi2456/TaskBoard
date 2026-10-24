@@ -9,3 +9,4 @@ export async function apiFetch(path, options = {}) {
   const url = getApiUrl(path);
   return fetch(url, options);
 }
+

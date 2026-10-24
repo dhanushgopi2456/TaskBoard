@@ -67,12 +67,32 @@ export async function initDb() {
         title VARCHAR(255) NOT NULL,
         description TEXT,
         priority VARCHAR(20) DEFAULT 'Medium',
+        category VARCHAR(50) DEFAULT 'General',
         due_date VARCHAR(50),
         completed BOOLEAN DEFAULT FALSE,
+        status VARCHAR(20) DEFAULT 'todo',
         created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
       );
+
+      CREATE TABLE IF NOT EXISTS focus_sessions (
+        id VARCHAR(64) PRIMARY KEY,
+        user_id VARCHAR(64) NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        task_id VARCHAR(64) REFERENCES tasks(id) ON DELETE SET NULL,
+        duration_minutes INTEGER NOT NULL,
+        mode VARCHAR(20) DEFAULT 'focus',
+        completed_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      );
     `);
+
+    // Ensure status and category columns exist in PostgreSQL
+    try {
+      await pgPool.query(`ALTER TABLE tasks ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'todo'`);
+      await pgPool.query(`ALTER TABLE tasks ADD COLUMN IF NOT EXISTS category VARCHAR(50) DEFAULT 'General'`);
+      await pgPool.query(`UPDATE tasks SET status = 'completed' WHERE completed = TRUE AND (status IS NULL OR status = 'todo')`);
+    } catch {
+      // Ignore if already configured
+    }
   } else {
     sqliteDb.exec(`
       CREATE TABLE IF NOT EXISTS users (
@@ -89,12 +109,41 @@ export async function initDb() {
         title TEXT NOT NULL,
         description TEXT,
         priority TEXT DEFAULT 'Medium',
+        category TEXT DEFAULT 'General',
         due_date TEXT,
         completed INTEGER DEFAULT 0,
+        status TEXT DEFAULT 'todo',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
       );
+
+      CREATE TABLE IF NOT EXISTS focus_sessions (
+        id TEXT PRIMARY KEY,
+        user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        task_id TEXT REFERENCES tasks(id) ON DELETE SET NULL,
+        duration_minutes INTEGER NOT NULL,
+        mode TEXT DEFAULT 'focus',
+        completed_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
     `);
+
+    // Ensure status and category columns exist in SQLite
+    try {
+      const tableInfo = sqliteDb.pragma('table_info(tasks)');
+      const hasStatus = tableInfo.some(col => col.name === 'status');
+      if (!hasStatus) {
+        sqliteDb.exec(`ALTER TABLE tasks ADD COLUMN status TEXT DEFAULT 'todo'`);
+      }
+      const hasCategory = tableInfo.some(col => col.name === 'category');
+      if (!hasCategory) {
+        sqliteDb.exec(`ALTER TABLE tasks ADD COLUMN category TEXT DEFAULT 'General'`);
+      }
+      sqliteDb.exec(`UPDATE tasks SET status = 'completed' WHERE completed = 1 AND (status IS NULL OR status = 'todo')`);
+      sqliteDb.exec(`UPDATE tasks SET status = 'todo' WHERE (completed = 0 OR completed IS NULL) AND (status IS NULL OR status = '')`);
+      sqliteDb.exec(`UPDATE tasks SET category = 'General' WHERE category IS NULL OR category = ''`);
+    } catch {
+      // Ignore
+    }
   }
 
   // Seed demo user demo@taskboard.com / Demo@123 if not exists
@@ -137,7 +186,8 @@ async function seedDemoUser() {
           description: 'Finalize the 10-slide pitch deck for Tuesday meeting with leadership',
           priority: 'High',
           dueDate: '2026-10-24',
-          completed: isPostgres ? false : 0
+          completed: isPostgres ? false : 0,
+          status: 'todo'
         },
         {
           id: 'task-demo-2',
@@ -146,7 +196,8 @@ async function seedDemoUser() {
           description: 'Online payment via state power distribution portal before late fine',
           priority: 'Medium',
           dueDate: '2026-10-20',
-          completed: isPostgres ? false : 0
+          completed: isPostgres ? false : 0,
+          status: 'in_progress'
         },
         {
           id: 'task-demo-3',
@@ -155,7 +206,8 @@ async function seedDemoUser() {
           description: 'Routine 6-month cleaning and dental checkup',
           priority: 'Low',
           dueDate: '2026-10-30',
-          completed: isPostgres ? false : 0
+          completed: isPostgres ? false : 0,
+          status: 'todo'
         },
         {
           id: 'task-demo-4',
@@ -164,22 +216,23 @@ async function seedDemoUser() {
           description: 'Compile sprint summary metrics and send email to engineering leads',
           priority: 'Medium',
           dueDate: '2026-10-21',
-          completed: isPostgres ? true : 1
+          completed: isPostgres ? true : 1,
+          status: 'completed'
         }
       ];
 
       for (const t of sampleTasks) {
         if (isPostgres) {
           await pgPool.query(
-            `INSERT INTO tasks (id, user_id, title, description, priority, due_date, completed) 
-             VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-            [t.id, t.userId, t.title, t.description, t.priority, t.dueDate, t.completed]
+            `INSERT INTO tasks (id, user_id, title, description, priority, due_date, completed, status) 
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+            [t.id, t.userId, t.title, t.description, t.priority, t.dueDate, t.completed, t.status]
           );
         } else {
           sqliteDb.prepare(
-            `INSERT INTO tasks (id, user_id, title, description, priority, due_date, completed) 
-             VALUES (?, ?, ?, ?, ?, ?, ?)`
-          ).run(t.id, t.userId, t.title, t.description, t.priority, t.dueDate, t.completed);
+            `INSERT INTO tasks (id, user_id, title, description, priority, due_date, completed, status) 
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+          ).run(t.id, t.userId, t.title, t.description, t.priority, t.dueDate, t.completed, t.status);
         }
       }
       console.log('✅ Demo user (demo@taskboard.com / Demo@123) and sample tasks successfully seeded');
@@ -190,3 +243,4 @@ async function seedDemoUser() {
 }
 
 export { isPostgres, pgPool, sqliteDb };
+

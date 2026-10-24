@@ -17,8 +17,19 @@
 ## 🎨 Animated 3D UI/UX Highlights
 
 - **Interactive 3D WebGL Background**: Built with **Three.js** featuring floating geometric prisms (icosahedrons, torus knots, octahedrons) and interactive particle constellations that respond smoothly to cursor coordinates and device motion.
+- **Interactive 3D Kanban Board**: Complete agile drag-and-drop workflow across **To Do**, **In Progress**, and **Done** columns with dynamic drop zones, glowing indicators, column task counters, and 1-click stage advancement buttons.
+- **Dynamic Analytics & Charts View**: Real-time visual metrics dashboard featuring:
+  - **Radial SVG Completion Gauge**: Animated circular progress ring with status velocity rating.
+  - **Tasks by Priority Breakdown**: Comparative stacked/split bar charts comparing completed vs open tasks across High, Medium, and Low priorities.
+  - **7-Day Weekly Schedule & Forecast**: Day-of-week workload distribution with a glowing indicator for "Today".
+  - **Smart Productivity Recommendations**: Adaptive feedback based on deadlines and overdue workload.
+- **Animated Toast Notification System**: Rich pop-up alerts with spring physics, auto-dismissing progress timer bars, type-specific ambient glows (`success`, `info`, `warning`, `error`, `delete`), and synthesized sound feedback on **every user action** (task creation, updates, completion, column drops, duplications, deletions, and filters).
 - **3D Card Perspective Tilt**: Tasks and Stat cards utilize real-time CSS 3D matrix math (`rotateX`, `rotateY`) and specular light sheen reflecting cursor angle with spring physics.
-- **3D Floating Action Button (FAB)**: Responsive bouncing `+` action button on mobile view with radial ambient glow.
+- **Quick Productivity Actions**:
+  - **Duplicate Task**: 1-click clone of any task.
+  - **Clear Completed Tasks**: Clean batch cleanup modal with safety confirmation.
+  - **Quick Filters**: Overdue (⚠️), High Priority (🔥), and Due Today (📅) filters.
+  - **Quick Due Date Presets**: Today, Tomorrow, +1 Week shortcuts in task creator modal.
 - **3D Micro-interactions & Physics**: Multi-color 3D confetti cannon (`canvas-confetti`) and subtle synthesized audio chime (via Web Audio API) on task completion.
 - **Dark Mode & Light Mode**: Smooth 3D theme transition with customized specular lighting, glassmorphic frosted borders, and deep ambient occlusion shadows.
 - **Full Mobile Responsiveness**: Pixel-perfect layout from 375px mobile screens up to 4K displays with zero horizontal scrolling.
@@ -56,10 +67,11 @@ All task endpoints are protected with Bearer JWT tokens.
 | `POST` | `/api/auth/signup` | Register a new user (`name`, `email`, `password` ≥ 8 chars) |
 | `POST` | `/api/auth/login` | Authenticate and retrieve JWT token |
 | `GET` | `/api/auth/me` | Fetch currently logged-in user profile |
-| `GET` | `/api/tasks` | List user tasks (supports `status=all\|pending\|completed`, `search`, `sort=due_date\|priority\|newest`) |
-| `POST` | `/api/tasks` | Create a task (`title` required, `description`, `priority`, `dueDate`) |
-| `PUT` | `/api/tasks/:id` | Update task fields or toggle completion (`completed: boolean`) |
+| `GET` | `/api/tasks` | List user tasks (supports `status=all\|pending\|completed\|todo\|in_progress`, `search`, `sort=due_date\|priority\|newest`) |
+| `POST` | `/api/tasks` | Create a task (`title` required, `description`, `priority`, `dueDate`, `status`) |
+| `PUT` | `/api/tasks/:id` | Update task fields, status (`todo\|in_progress\|completed`), or completion (`completed: boolean`) |
 | `DELETE` | `/api/tasks/:id` | Delete a task (with ownership verification) |
+| `DELETE` | `/api/tasks/completed/clear` | Clear all completed tasks for logged-in user |
 
 ---
 

@@ -6,6 +6,9 @@
   .perspective-1000 {
     perspective: 1000px;
   }
+  .perspective-1500 {
+    perspective: 1500px;
+  }
   .perspective-2000 {
     perspective: 2000px;
   }
@@ -26,44 +29,76 @@
   }
 }
 
+/* Base Body Background with ambient gradient depth */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+  overflow-x: hidden;
+}
+
+.dark body {
+  background-color: #0b0f19;
+}
+
 /* Glassmorphism custom classes */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .dark .glass-panel {
-  background: rgba(18, 24, 38, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.07),
-              0 2px 4px -2px rgba(0, 0, 0, 0.04),
-              inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.06),
+              0 4px 6px -2px rgba(0, 0, 0, 0.02),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .dark .glass-card {
-  background: rgba(22, 28, 45, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(18, 25, 44, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.55),
+              0 6px 12px -4px rgba(0, 0, 0, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Ambient glow orb gradients */
+.ambient-glow-orb {
+  position: fixed;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  opacity: 0.25;
+  z-index: 1;
+}
+
+.dark .ambient-glow-orb {
+  opacity: 0.18;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -71,14 +106,23 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.4);
+  background: rgba(156, 163, 175, 0.35);
   border-radius: 9999px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: rgba(75, 85, 99, 0.5);
+  background: rgba(100, 116, 139, 0.35);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.6);
+  background: rgba(99, 102, 241, 0.65);
 }
+
+/* Custom Animated Cursor Rules (Desktop fine pointer only, disabled completely on touch/mobile) */
+@media (pointer: fine) and (hover: hover) {
+  html.custom-cursor-enabled,
+  html.custom-cursor-enabled * {
+    cursor: none !important;
+  }
+}
+

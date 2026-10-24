@@ -1,48 +1,52 @@
-import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 
 export default function Card3D({
   children,
   className = '',
-  maxTilt = 6,
+  maxTilt = 7,
   onClick,
-  glowColor = 'rgba(99, 102, 241, 0.15)',
+  glowColor = 'rgba(99, 102, 241, 0.18)',
   ...props
 }) {
   const cardRef = useRef(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const [sheenPos, setSheenPos] = useState({ x: 50, y: 50 });
-  const [isHovered, setIsHovered] = useState(false);
+
+  // Normalized motion values for cursor position (-0.5 to 0.5)
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const isHovered = useMotionValue(0);
+
+  // Smooth springs for rotation physics
+  const springConfig = { stiffness: 350, damping: 25 };
+  const smoothX = useSpring(x, springConfig);
+  const smoothY = useSpring(y, springConfig);
+  const smoothGlow = useSpring(isHovered, { stiffness: 400, damping: 30 });
+
+  // Transforms mapped to rotation angles
+  const rotateX = useTransform(smoothY, [-0.5, 0.5], [maxTilt, -maxTilt]);
+  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-maxTilt, maxTilt]);
+
+  // Dynamic light position
+  const lightX = useTransform(smoothX, [-0.5, 0.5], ['20%', '80%']);
+  const lightY = useTransform(smoothY, [-0.5, 0.5], ['20%', '80%']);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rX = ((y - centerY) / centerY) * -maxTilt;
-    const rY = ((x - centerX) / centerX) * maxTilt;
-
-    setRotateX(rX);
-    setRotateY(rY);
-    setSheenPos({
-      x: (x / rect.width) * 100,
-      y: (y / rect.height) * 100,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-    setIsHovered(false);
+    const normalizedX = (e.clientX - rect.left) / rect.width - 0.5;
+    const normalizedY = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(normalizedX);
+    y.set(normalizedY);
   };
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    isHovered.set(1);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    isHovered.set(0);
   };
 
   return (
@@ -52,28 +56,29 @@ export default function Card3D({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      animate={{
+      style={{
         rotateX,
         rotateY,
-        scale: isHovered ? 1.012 : 1,
-      }}
-      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-      style={{
         transformStyle: 'preserve-3d',
-        perspective: '1200px',
+        perspective: 1200,
       }}
-      className={`relative rounded-2xl transition-shadow duration-300 ${className}`}
+      whileHover={{ y: -2 }}
+      transition={{ type: 'spring', visualDuration: 0.25, bounce: 0.15 }}
+      className={`relative rounded-3xl will-change-transform ${className}`}
       {...props}
     >
-      {/* 3D Specular Sheen Layer */}
-      {isHovered && (
-        <div
-          className="pointer-events-none absolute inset-0 rounded-2xl z-10 transition-opacity duration-300"
-          style={{
-            background: `radial-gradient(circle 280px at ${sheenPos.x}% ${sheenPos.y}%, ${glowColor}, transparent 75%)`,
-          }}
-        />
-      )}
+      {/* 3D Specular Sheen Layer that follows cursor */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 rounded-3xl z-10 transition-opacity duration-300 overflow-hidden"
+        style={{
+          opacity: smoothGlow,
+          background: useTransform(
+            [lightX, lightY],
+            ([lx, ly]) =>
+              `radial-gradient(circle 280px at ${lx} ${ly}, ${glowColor}, transparent 75%)`
+          ),
+        }}
+      />
       <div className="relative z-20 h-full">{children}</div>
     </motion.div>
   );

@@ -201,6 +201,33 @@ describe('TaskBoard API Endpoints & Business Logic Tests', () => {
       expect(res.body.tasks).toHaveLength(1);
     });
 
+    it('User A can create and update a task with custom category', async () => {
+      const createRes = await request(app)
+        .post('/api/tasks')
+        .set('Authorization', `Bearer ${userAToken}`)
+        .send({
+          title: 'Design high-contrast accessibility tokens',
+          category: 'Design',
+          priority: 'High'
+        });
+      expect(createRes.status).toBe(201);
+      expect(createRes.body.task.category).toBe('Design');
+
+      const updateRes = await request(app)
+        .put(`/api/tasks/${createRes.body.task.id}`)
+        .set('Authorization', `Bearer ${userAToken}`)
+        .send({
+          category: 'Development'
+        });
+      expect(updateRes.status).toBe(200);
+      expect(updateRes.body.task.category).toBe('Development');
+
+      // Clean up
+      await request(app)
+        .delete(`/api/tasks/${createRes.body.task.id}`)
+        .set('Authorization', `Bearer ${userAToken}`);
+    });
+
     it('User A can delete their task', async () => {
       const res = await request(app)
         .delete(`/api/tasks/${userATaskId}`)
@@ -216,4 +243,38 @@ describe('TaskBoard API Endpoints & Business Logic Tests', () => {
       expect(listRes.body.counts.total).toBe(0);
     });
   });
+
+  describe('4. Pomodoro Focus Sessions & Persistence', () => {
+    it('POST /api/focus/sessions requires authentication', async () => {
+      const res = await request(app)
+        .post('/api/focus/sessions')
+        .send({ durationMinutes: 25 });
+      expect(res.status).toBe(401);
+    });
+
+    it('POST /api/focus/sessions records a completed session', async () => {
+      const res = await request(app)
+        .post('/api/focus/sessions')
+        .set('Authorization', `Bearer ${userAToken}`)
+        .send({
+          durationMinutes: 25,
+          mode: 'focus'
+        });
+      expect(res.status).toBe(201);
+      expect(res.body.session).toHaveProperty('id');
+      expect(res.body.session.duration_minutes).toBe(25);
+    });
+
+    it('GET /api/focus/stats calculates aggregate focus metrics', async () => {
+      const res = await request(app)
+        .get('/api/focus/stats')
+        .set('Authorization', `Bearer ${userAToken}`);
+      expect(res.status).toBe(200);
+      expect(res.body.totalSessions).toBeGreaterThanOrEqual(1);
+      expect(res.body.totalMinutes).toBeGreaterThanOrEqual(25);
+      expect(Array.isArray(res.body.dailyBreakdown)).toBe(true);
+      expect(res.body.dailyBreakdown).toHaveLength(7);
+    });
+  });
 });
+

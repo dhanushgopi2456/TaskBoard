@@ -20,3 +20,4 @@ export function authenticateToken(req, res, next) {
     return res.status(401).json({ error: 'Unauthorized: Invalid or expired token' });
   }
 }
+

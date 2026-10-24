@@ -5,6 +5,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
+import focusRoutes from './routes/focusRoutes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,6 +32,7 @@ app.get('/health', (req, res) => {
 // Mount modular API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api/focus', focusRoutes);
 
 // Serve static frontend assets if frontend build exists
 const frontendDistPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
@@ -63,3 +65,4 @@ app.use((err, req, res, next) => {
 });
 
 export default app;
+
