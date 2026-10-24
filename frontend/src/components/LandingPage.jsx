@@ -442,7 +442,8 @@ export default function LandingPage({
       </section>
 
       {/* 4. WORKFLOW / 3-STEP PROCESS SECTION */}
-      <section id="workflow" className="scroll-mt-20 py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-slate-200/50 dark:border-slate-800/50">
+      <section id="workflow" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-slate-200/50 dark:border-slate-800/50">
+        <span id="workflows" className="sr-only">Workflows</span>
         <span id="how-it-works" className="sr-only">How it works</span>
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-2 block">

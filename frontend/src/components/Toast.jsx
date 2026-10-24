@@ -9,14 +9,24 @@ import {
   X,
   Info
 } from 'lucide-react';
-import { playNotificationSound, playSuccessSound, playDeleteSound } from '../utils/effects';
+import {
+  playNotificationSound,
+  playSuccessSound,
+  playDeleteSound,
+  getGlobalSoundEnabled,
+  setGlobalSoundEnabled,
+} from '../utils/effects';
 
 const ToastContext = createContext(null);
 
 export function ToastProvider({ children, soundEnabled = true }) {
   const [toasts, setToasts] = useState([]);
   const soundEnabledRef = useRef(soundEnabled);
-  soundEnabledRef.current = soundEnabled;
+
+  React.useEffect(() => {
+    soundEnabledRef.current = soundEnabled;
+    setGlobalSoundEnabled(soundEnabled);
+  }, [soundEnabled]);
 
   const removeToast = useCallback((id) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
@@ -31,8 +41,8 @@ export function ToastProvider({ children, soundEnabled = true }) {
     }) => {
       const id = 'toast-' + Math.random().toString(36).substr(2, 9);
 
-      // Play sound effect based on type
-      if (soundEnabledRef.current) {
+      // Play sound effect based on type (checks immediate global state)
+      if (soundEnabledRef.current && getGlobalSoundEnabled()) {
         if (type === 'success') {
           playSuccessSound();
         } else if (type === 'delete') {

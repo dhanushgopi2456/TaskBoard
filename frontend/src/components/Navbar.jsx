@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { useToast } from './Toast';
 import { useLiveClock } from '../utils/useLiveClock';
+import { setGlobalSoundEnabled, playSuccessSound, getAudioContext } from '../utils/effects';
 
 export default function Navbar({
   user,
@@ -48,6 +49,20 @@ export default function Navbar({
   const handleToggleSound = () => {
     const nextSound = !soundEnabled;
     setSoundEnabled(nextSound);
+    setGlobalSoundEnabled(nextSound);
+
+    // If turning ON, wake up Web Audio API and trigger cheerful confirmation chime
+    if (nextSound) {
+      try {
+        const ctx = getAudioContext();
+        if (ctx && ctx.state === 'suspended') {
+          ctx.resume().then(() => playSuccessSound()).catch(() => {});
+        } else {
+          playSuccessSound();
+        }
+      } catch {}
+    }
+
     addToast({
       type: 'info',
       title: 'Sound Feedback',
@@ -71,19 +86,39 @@ export default function Navbar({
 
   const scrollToSection = (sectionId) => {
     setMobileMenuOpen(false);
+
+    const performScroll = (retry = 0) => {
+      // Map aliases so both singular ('workflow') and plural ('workflows') work seamlessly
+      const targetId = sectionId === 'workflows' ? 'workflow' : sectionId;
+      const el = document.getElementById(targetId) || document.getElementById(sectionId);
+
+      if (el) {
+        // Sticky navbar height is 64px (h-16). Offset by 80px so title has clear headroom
+        const navOffset = 80;
+        const rect = el.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetTop = rect.top + scrollTop - navOffset;
+
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth',
+        });
+
+        // Complementary fallback for mobile webviews
+        try {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch {}
+      } else if (retry < 10) {
+        setTimeout(() => performScroll(retry + 1), 60);
+      }
+    };
+
     if (currentRoute !== 'landing') {
       if (onNavigate) onNavigate('landing');
-      setTimeout(() => {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 150);
+      setTimeout(() => performScroll(), 320);
     } else {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      // Delay allows the mobile drawer collapse animation to begin without distorting scroll coordinates
+      setTimeout(() => performScroll(), 120);
     }
   };
 
