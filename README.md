@@ -26,40 +26,28 @@
 ## 🧭 Quick Navigation
 
 <p align="center">
-  <a href="#-demo-credentials">
+  <a href="#demo-credentials">
     <img src="https://img.shields.io/badge/Demo_Credentials-2563EB?style=for-the-badge" alt="Demo Credentials"/>
   </a>
-  <a href="#-animated-3d-uiux-highlights">
+  <a href="#features">
     <img src="https://img.shields.io/badge/Features-7C3AED?style=for-the-badge" alt="Features"/>
   </a>
-  <a href="#-system-architecture">
+  <a href="#system-architecture">
     <img src="https://img.shields.io/badge/System_Architecture-0891B2?style=for-the-badge" alt="System Architecture"/>
   </a>
-  <a href="#-tech-stack">
+  <a href="#tech-stack">
     <img src="https://img.shields.io/badge/Tech_Stack-059669?style=for-the-badge" alt="Tech Stack"/>
   </a>
-  <a href="#-api-endpoints">
+  <a href="#api-endpoints">
     <img src="https://img.shields.io/badge/API_Endpoints-EA580C?style=for-the-badge" alt="API Endpoints"/>
   </a>
-  <a href="#-how-to-run-in-visual-studio-code-vs-code">
-    <img src="https://img.shields.io/badge/VS_Code_Setup-6366F1?style=for-the-badge" alt="VS Code Setup"/>
-  </a>
-  <a href="#-running-automated-tests">
-    <img src="https://img.shields.io/badge/Testing-DB2777?style=for-the-badge" alt="Testing"/>
-  </a>
-  <a href="#-deployment-instructions">
+  <a href="#deployment">
     <img src="https://img.shields.io/badge/Deployment-0F766E?style=for-the-badge" alt="Deployment"/>
   </a>
 </p>
 
-<p align="center">
-  <a href="#-system-architecture">
-    <img src="https://img.shields.io/badge/🏗️_View_System_Architecture-7C3AED?style=for-the-badge&amp;logo=diagramsdotnet&amp;logoColor=white" alt="View System Architecture"/>
-  </a>
-</p>
-
 ---
-
+<a id="demo-credentials"></a>
 ## 🌟 Demo Credentials
 
 | Role | Email | Password | Sample Tasks |
@@ -71,7 +59,7 @@ You can also click **Fill Demo Login** on the login screen for one-click evaluat
 > **Security note:** These are demo credentials documented by the project. Avoid using demo credentials or hardcoded secrets for production accounts.
 
 ---
-
+<a id="features"></a>
 ## 🎨 Animated 3D UI/UX Highlights
 
 - **Interactive 3D WebGL Background:** Three.js floating geometric shapes and interactive particle constellations.
@@ -86,7 +74,7 @@ You can also click **Fill Demo Login** on the login screen for one-click evaluat
 - **Responsive Layout:** Designed for mobile and desktop screens.
 
 ---
-
+<a id="system-architecture"></a>
 ## 🏗️ System Architecture
 
 <p align="center">
@@ -142,7 +130,7 @@ flowchart LR
 ```
 
 ---
-
+<a id="tech-stack"></a>
 ## 🛠️ Tech Stack
 
 ### Frontend
@@ -177,7 +165,7 @@ flowchart LR
 - **PostgreSQL:** Cloud database support through `DATABASE_URL`.
 
 ---
-
+<a id="api-endpoints"></a>
 ## 📋 API Endpoints
 
 Task endpoints require a valid Bearer JWT token.
@@ -341,7 +329,7 @@ The documented Jest and Supertest suite covers:
 The original project documentation reports **16 automated tests**. Run the suite to verify the current result.
 
 ---
-
+<a id="deployment"></a>
 ## ☁️ Deployment Instructions
 
 > **Note:** Free cloud services may sleep when idle, causing the first request after inactivity to take longer.
