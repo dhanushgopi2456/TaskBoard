@@ -2,8 +2,12 @@
   "name": "taskboard-monorepo",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "TaskBoard — 3D Animated Full-Stack Task Manager",
   "scripts": {
+    "dev": "node scripts/dev.js",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
     "start": "node backend/src/server.js",
     "test": "cd backend && npm test",
     "build": "cd frontend && npm run build",
