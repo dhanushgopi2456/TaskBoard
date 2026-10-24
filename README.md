@@ -13,6 +13,8 @@
   <img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js Express" />
 </p>
 
+# 🚀 TaskBoard — 3D Spatial Task Manager
+
 > A modern, responsive, animated 3D task manager built with React, Three.js, Framer Motion, Node.js/Express, and PostgreSQL/SQLite.
 
 <p align="center">
@@ -24,12 +26,36 @@
 ## 🧭 Quick Navigation
 
 <p align="center">
-  <a href="#-demo-credentials"><img src="https://img.shields.io/badge/Demo_Login-2563EB?style=for-the-badge" alt="Demo Login" /></a>
-  <a href="#-animated-3d-uiux-highlights"><img src="https://img.shields.io/badge/Features-7C3AED?style=for-the-badge" alt="Features" /></a>
-  <a href="#-system-architecture"><img src="https://img.shields.io/badge/System_Architecture-0891B2?style=for-the-badge" alt="System Architecture" /></a>
-  <a href="#-tech-stack"><img src="https://img.shields.io/badge/Tech_Stack-059669?style=for-the-badge" alt="Tech Stack" /></a>
-  <a href="#-api-endpoints"><img src="https://img.shields.io/badge/API-EA580C?style=for-the-badge" alt="API Endpoints" /></a>
-  <a href="#-deployment-instructions"><img src="https://img.shields.io/badge/Deployment-DC2626?style=for-the-badge" alt="Deployment" /></a>
+  <a href="#-demo-credentials">
+    <img src="https://img.shields.io/badge/Demo_Credentials-2563EB?style=for-the-badge" alt="Demo Credentials"/>
+  </a>
+  <a href="#-animated-3d-uiux-highlights">
+    <img src="https://img.shields.io/badge/Features-7C3AED?style=for-the-badge" alt="Features"/>
+  </a>
+  <a href="#-system-architecture">
+    <img src="https://img.shields.io/badge/System_Architecture-0891B2?style=for-the-badge" alt="System Architecture"/>
+  </a>
+  <a href="#-tech-stack">
+    <img src="https://img.shields.io/badge/Tech_Stack-059669?style=for-the-badge" alt="Tech Stack"/>
+  </a>
+  <a href="#-api-endpoints">
+    <img src="https://img.shields.io/badge/API_Endpoints-EA580C?style=for-the-badge" alt="API Endpoints"/>
+  </a>
+  <a href="#-how-to-run-in-visual-studio-code-vs-code">
+    <img src="https://img.shields.io/badge/VS_Code_Setup-6366F1?style=for-the-badge" alt="VS Code Setup"/>
+  </a>
+  <a href="#-running-automated-tests">
+    <img src="https://img.shields.io/badge/Testing-DB2777?style=for-the-badge" alt="Testing"/>
+  </a>
+  <a href="#-deployment-instructions">
+    <img src="https://img.shields.io/badge/Deployment-0F766E?style=for-the-badge" alt="Deployment"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="#-system-architecture">
+    <img src="https://img.shields.io/badge/🏗️_View_System_Architecture-7C3AED?style=for-the-badge&amp;logo=diagramsdotnet&amp;logoColor=white" alt="View System Architecture"/>
+  </a>
 </p>
 
 ---
@@ -53,15 +79,21 @@ You can also click **Fill Demo Login** on the login screen for one-click evaluat
 - **Analytics Dashboard:** Animated completion gauge, priority breakdown, weekly workload, and productivity recommendations.
 - **Animated Notifications:** Toast alerts with status-specific visual effects and auto-dismiss timers.
 - **3D Card Perspective:** CSS 3D tilt and lighting effects on task and statistic cards.
-- **Quick Productivity Actions:** Duplicate tasks, clear completed tasks, filter overdue work, and prioritize high-priority tasks.
+- **Quick Productivity Actions:** Duplicate tasks, clear completed tasks, and filter overdue or high-priority work.
 - **Due-Date Shortcuts:** Quickly choose Today, Tomorrow, or one week ahead.
 - **Completion Effects:** Confetti and synthesized audio feedback.
 - **Dark and Light Themes:** Glassmorphism, ambient shadows, and theme transitions.
 - **Responsive Layout:** Designed for mobile and desktop screens.
 
 ---
-<a id=system-architecture></a>
+
 ## 🏗️ System Architecture
+
+<p align="center">
+  <a href="#-system-architecture">
+    <img src="https://img.shields.io/badge/🏗️_System_Architecture-2563EB?style=for-the-badge&amp;logo=diagramsdotnet&amp;logoColor=white" alt="System Architecture Section"/>
+  </a>
+</p>
 
 ```mermaid
 flowchart TB
@@ -98,7 +130,6 @@ flowchart LR
     B --> C["To Do"]
     C --> D["In Progress"]
     D --> E["Completed"]
-
     E --> F["Analytics Update"]
 
     classDef create fill:#DBEAFE,stroke:#2563EB,color:#1E3A8A,stroke-width:2px;
@@ -166,18 +197,18 @@ Task endpoints require a valid Bearer JWT token.
 ### Supported task query parameters
 
 - `status`: `all`, `pending`, `completed`, `todo`, `in_progress`
-- `search`: search tasks
+- `search`: Search tasks
 - `sort`: `due_date`, `priority`, `newest`
 
 ---
 
-## 🖥️ Run in Visual Studio Code
+## 🖥️ How to Run in Visual Studio Code (VS Code)
 
-### 1. Open the project
+### Step 1: Open the project
 
 Open the `TaskBoard` folder in VS Code.
 
-### 2. Start the backend
+### Step 2: Start the backend
 
 Open a terminal:
 
@@ -191,7 +222,7 @@ Expected local API address:
 
 `http://localhost:5000`
 
-### 3. Start the frontend
+### Step 3: Start the frontend
 
 Open a second terminal:
 
@@ -205,7 +236,7 @@ Expected local frontend address:
 
 `http://localhost:3000`
 
-### 4. Log in
+### Step 4: Log in
 
 Open `http://localhost:3000` in your browser and use the demo login option.
 
@@ -255,16 +286,16 @@ JWT_SECRET=replace-with-a-long-random-secret
 
 Use a unique, securely generated `JWT_SECRET` in production. Never commit real secrets to GitHub.
 
-### 4. Run both servers
+### 4. Run development servers
 
-Backend terminal:
+**Backend terminal:**
 
 ```bash
 cd backend
 npm run dev
 ```
 
-Frontend terminal:
+**Frontend terminal:**
 
 ```bash
 cd frontend
@@ -286,7 +317,7 @@ The documented unified setup serves the frontend and API from port `5000`.
 
 ---
 
-## 🧪 Automated Tests
+## 🧪 Running Automated Tests
 
 Run the backend tests:
 
@@ -295,7 +326,7 @@ cd backend
 npm test
 ```
 
-The README documents a Jest and Supertest suite covering:
+The documented Jest and Supertest suite covers:
 
 - Health check responses
 - Password validation
@@ -313,7 +344,9 @@ The original project documentation reports **16 automated tests**. Run the suite
 
 ## ☁️ Deployment Instructions
 
-### Frontend — Vercel
+> **Note:** Free cloud services may sleep when idle, causing the first request after inactivity to take longer.
+
+### Deploy Frontend to Vercel
 
 1. Push the repository to GitHub.
 2. Open [Vercel](https://vercel.com).
@@ -327,7 +360,7 @@ The original project documentation reports **16 automated tests**. Run the suite
 
 6. Deploy and test the application.
 
-### Backend — Render
+### Deploy Backend to Render
 
 1. Open [Render](https://render.com).
 2. Create a new Web Service and connect the repository.
@@ -356,8 +389,6 @@ The original project documentation reports **16 automated tests**. Run the suite
 
    `https://your-api.onrender.com/api/health`
 
-> **Hosting note:** Free cloud services may sleep when idle, causing the first request after inactivity to take longer.
-
 ---
 
 ## 🤖 AI Usage Note
@@ -372,14 +403,14 @@ AI tools were used to assist with:
 
 ## 💡 Follow-Up Live Coding: Adding a Category Field
 
-The original project notes identify these areas for extending tasks with a `Category` field:
+The project notes identify these areas for extending tasks with a `Category` field:
 
 1. **Database:** Update `backend/src/db.js` to add the category field and handle it in relevant queries.
 2. **Controller:** Update `backend/src/controllers/taskController.js` to accept category during task creation and updates.
 3. **Task modal:** Update `frontend/src/components/TaskModal3D.jsx` with a category dropdown or input.
 4. **Task card:** Update `frontend/src/components/TaskItem3D.jsx` to display a category badge.
 
-Remember to update validation, database migrations or table creation logic, and tests as needed.
+Remember to update validation, database table creation logic, and tests as needed.
 
 ---
 
