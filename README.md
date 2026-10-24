@@ -1,264 +1,395 @@
+ <p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:0F172A,35:2563EB,70:7C3AED,100:06B6D4&amp;height=230&amp;section=header&amp;text=TaskBoard&amp;fontSize=54&amp;fontColor=ffffff&amp;animation=fadeIn&amp;fontAlignY=35&amp;desc=3D%20Spatial%20Task%20Manager&amp;descAlignY=55&amp;descSize=20" alt="TaskBoard 3D Spatial Task Manager banner" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;weight=600&amp;size=18&amp;duration=2600&amp;pause=900&amp;color=7C3AED&amp;center=true&amp;vCenter=true&amp;width=750&amp;lines=Plan+smarter.+Ship+faster.;A+3D+workspace+for+everyday+tasks;React+%7C+Three.js+%7C+Framer+Motion+%7C+Express" alt="TaskBoard animated tagline" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&amp;logo=react&amp;logoColor=black" alt="React 18" />
+  <img src="https://img.shields.io/badge/Three.js-3D%20UI-000000?style=for-the-badge&amp;logo=threedotjs&amp;logoColor=white" alt="Three.js" />
+  <img src="https://img.shields.io/badge/Framer%20Motion-Animations-0055FF?style=for-the-badge&amp;logo=framer&amp;logoColor=white" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js Express" />
+</p>
+
 # 🚀 TaskBoard — 3D Spatial Task Manager
 
-> **A modern, responsive, animated 3D task manager built with React, Three.js, Framer Motion, Node.js/Express, and PostgreSQL/SQLite.**
+> A modern, responsive, animated 3D task manager built with React, Three.js, Framer Motion, Node.js/Express, and PostgreSQL/SQLite.
+
+<p align="center">
+  <strong>Organize tasks. Visualize progress. Stay productive.</strong>
+</p>
+
+---
+
+## 🧭 Quick Navigation
+
+<p align="center">
+  <a href="#-demo-credentials"><img src="https://img.shields.io/badge/Demo_Login-2563EB?style=for-the-badge" alt="Demo Login" /></a>
+  <a href="#-animated-3d-uiux-highlights"><img src="https://img.shields.io/badge/Features-7C3AED?style=for-the-badge" alt="Features" /></a>
+  <a href="#-system-architecture"><img src="https://img.shields.io/badge/System_Architecture-0891B2?style=for-the-badge" alt="System Architecture" /></a>
+  <a href="#-tech-stack"><img src="https://img.shields.io/badge/Tech_Stack-059669?style=for-the-badge" alt="Tech Stack" /></a>
+  <a href="#-api-endpoints"><img src="https://img.shields.io/badge/API-EA580C?style=for-the-badge" alt="API Endpoints" /></a>
+  <a href="#-deployment-instructions"><img src="https://img.shields.io/badge/Deployment-DC2626?style=for-the-badge" alt="Deployment" /></a>
+</p>
 
 ---
 
 ## 🌟 Demo Credentials
 
-| Role | Email | Password | Pre-seeded Sample Tasks |
-| :--- | :--- | :--- | :--- |
-| **Demo User** | `demo@taskboard.com` | `Demo@123` | 4 tasks (High, Medium, Low, Overdue, Completed) |
+| Role | Email | Password | Sample Tasks |
+|---|---|---|---|
+| **Demo User** | `demo@taskboard.com` | `Demo@123` | Pre-seeded task examples |
 
-*(You can also click the **"Fill Demo Login"** button directly on the login screen for 1-click evaluation!)*
+You can also click **Fill Demo Login** on the login screen for one-click evaluation.
+
+> **Security note:** These are demo credentials documented by the project. Avoid using demo credentials or hardcoded secrets for production accounts.
 
 ---
 
 ## 🎨 Animated 3D UI/UX Highlights
 
-- **Interactive 3D WebGL Background**: Built with **Three.js** featuring floating geometric prisms (icosahedrons, torus knots, octahedrons) and interactive particle constellations that respond smoothly to cursor coordinates and device motion.
-- **Interactive 3D Kanban Board**: Complete agile drag-and-drop workflow across **To Do**, **In Progress**, and **Done** columns with dynamic drop zones, glowing indicators, column task counters, and 1-click stage advancement buttons.
-- **Dynamic Analytics & Charts View**: Real-time visual metrics dashboard featuring:
-  - **Radial SVG Completion Gauge**: Animated circular progress ring with status velocity rating.
-  - **Tasks by Priority Breakdown**: Comparative stacked/split bar charts comparing completed vs open tasks across High, Medium, and Low priorities.
-  - **7-Day Weekly Schedule & Forecast**: Day-of-week workload distribution with a glowing indicator for "Today".
-  - **Smart Productivity Recommendations**: Adaptive feedback based on deadlines and overdue workload.
-- **Animated Toast Notification System**: Rich pop-up alerts with spring physics, auto-dismissing progress timer bars, type-specific ambient glows (`success`, `info`, `warning`, `error`, `delete`), and synthesized sound feedback on **every user action** (task creation, updates, completion, column drops, duplications, deletions, and filters).
-- **3D Card Perspective Tilt**: Tasks and Stat cards utilize real-time CSS 3D matrix math (`rotateX`, `rotateY`) and specular light sheen reflecting cursor angle with spring physics.
-- **Quick Productivity Actions**:
-  - **Duplicate Task**: 1-click clone of any task.
-  - **Clear Completed Tasks**: Clean batch cleanup modal with safety confirmation.
-  - **Quick Filters**: Overdue (⚠️), High Priority (🔥), and Due Today (📅) filters.
-  - **Quick Due Date Presets**: Today, Tomorrow, +1 Week shortcuts in task creator modal.
-- **3D Micro-interactions & Physics**: Multi-color 3D confetti cannon (`canvas-confetti`) and subtle synthesized audio chime (via Web Audio API) on task completion.
-- **Dark Mode & Light Mode**: Smooth 3D theme transition with customized specular lighting, glassmorphic frosted borders, and deep ambient occlusion shadows.
-- **Full Mobile Responsiveness**: Pixel-perfect layout from 375px mobile screens up to 4K displays with zero horizontal scrolling.
+- **Interactive 3D WebGL Background:** Three.js floating geometric shapes and interactive particle constellations.
+- **Interactive Kanban Board:** Drag-and-drop tasks across To Do, In Progress, and Done columns.
+- **Analytics Dashboard:** Animated completion gauge, priority breakdown, weekly workload, and productivity recommendations.
+- **Animated Notifications:** Toast alerts with status-specific visual effects and auto-dismiss timers.
+- **3D Card Perspective:** CSS 3D tilt and lighting effects on task and statistic cards.
+- **Quick Productivity Actions:** Duplicate tasks, clear completed tasks, filter overdue work, and prioritize high-priority tasks.
+- **Due-Date Shortcuts:** Quickly choose Today, Tomorrow, or one week ahead.
+- **Completion Effects:** Confetti and synthesized audio feedback.
+- **Dark and Light Themes:** Glassmorphism, ambient shadows, and theme transitions.
+- **Responsive Layout:** Designed for mobile and desktop screens.
 
 ---
 
-## 🛠 Tech Stack
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TB
+    U["👤 User"] --> UI["React 18 + Vite"]
+    UI --> FX["Three.js + Framer Motion"]
+    UI -->|"REST API + JWT"| API["Express REST API"]
+
+    API --> AUTH["JWT Authentication"]
+    AUTH --> CTRL["Task Controllers"]
+    CTRL --> OWN["User Ownership Checks"]
+    OWN --> DB{"Database Configuration"}
+
+    DB -->|"Local default"| SQLITE["SQLite"]
+    DB -->|"DATABASE_URL configured"| PG["PostgreSQL"]
+
+    TEST["Jest + Supertest"] -.-> API
+
+    classDef client fill:#DBEAFE,stroke:#2563EB,color:#1E3A8A,stroke-width:2px;
+    classDef server fill:#EDE9FE,stroke:#7C3AED,color:#4C1D95,stroke-width:2px;
+    classDef data fill:#D1FAE5,stroke:#059669,color:#064E3B,stroke-width:2px;
+    classDef test fill:#FFEDD5,stroke:#EA580C,color:#9A3412,stroke-width:2px;
+
+    class U,UI,FX client;
+    class API,AUTH,CTRL,OWN server;
+    class DB,SQLITE,PG data;
+    class TEST test;
+```
+
+### 🔄 Task Management Workflow
+
+```mermaid
+flowchart LR
+    A["Create Task"] --> B["Set Priority and Due Date"]
+    B --> C["To Do"]
+    C --> D["In Progress"]
+    D --> E["Completed"]
+
+    E --> F["Analytics Update"]
+
+    classDef create fill:#DBEAFE,stroke:#2563EB,color:#1E3A8A,stroke-width:2px;
+    classDef progress fill:#EDE9FE,stroke:#7C3AED,color:#4C1D95,stroke-width:2px;
+    classDef done fill:#D1FAE5,stroke:#059669,color:#064E3B,stroke-width:2px;
+
+    class A,B create;
+    class C,D progress;
+    class E,F done;
+```
+
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
-- **Framework**: React 18 with Vite
-- **Styling**: Tailwind CSS with custom glassmorphism and 3D utility layers
-- **3D Engine**: Three.js (WebGL interactive canvas)
-- **Animation**: Framer Motion (spring layouts, 3D modals, tab indicators)
-- **Icons**: Lucide React
-- **Confetti & FX**: canvas-confetti & Web Audio API synthesizer
 
-### Backend API
-- **Runtime**: Node.js (ESM modules)
-- **Framework**: Express.js REST API
-- **Security & Auth**: JWT (`jsonwebtoken`), password hashing with `bcryptjs` (salt rounds: 10), user-isolated row access checks
-- **Database**: Dual-engine architecture:
-  - **Embedded SQLite** (`better-sqlite3`) for instant zero-configuration local runs
-  - **PostgreSQL** (`pg`) for cloud deployment (Neon, Supabase, Render Postgres) by setting `DATABASE_URL`
-- **Testing**: Jest + Supertest (16 automated tests covering validation, user isolation, auth, and CRUD)
+| Technology | Purpose |
+|---|---|
+| React 18 | Component-based UI |
+| Vite | Development server and build tooling |
+| Tailwind CSS | Styling and responsive layout |
+| Three.js | Interactive 3D background |
+| Framer Motion | UI animations and transitions |
+| Lucide React | Icons |
+| canvas-confetti | Completion effects |
+| Web Audio API | Synthesized audio feedback |
+
+### Backend
+
+| Technology | Purpose |
+|---|---|
+| Node.js | JavaScript runtime |
+| Express.js | REST API |
+| JSON Web Tokens | Authentication |
+| bcryptjs | Password hashing |
+| better-sqlite3 | Local SQLite database |
+| pg | PostgreSQL connectivity |
+| Jest | Automated testing |
+| Supertest | HTTP endpoint testing |
+
+### Database Configuration
+
+- **SQLite:** Local development with minimal configuration.
+- **PostgreSQL:** Cloud database support through `DATABASE_URL`.
 
 ---
 
 ## 📋 API Endpoints
 
-All task endpoints are protected with Bearer JWT tokens.
+Task endpoints require a valid Bearer JWT token.
 
 | Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/api/health` | Health check endpoint (returns `"OK"`) |
-| `POST` | `/api/auth/signup` | Register a new user (`name`, `email`, `password` ≥ 8 chars) |
-| `POST` | `/api/auth/login` | Authenticate and retrieve JWT token |
-| `GET` | `/api/auth/me` | Fetch currently logged-in user profile |
-| `GET` | `/api/tasks` | List user tasks (supports `status=all\|pending\|completed\|todo\|in_progress`, `search`, `sort=due_date\|priority\|newest`) |
-| `POST` | `/api/tasks` | Create a task (`title` required, `description`, `priority`, `dueDate`, `status`) |
-| `PUT` | `/api/tasks/:id` | Update task fields, status (`todo\|in_progress\|completed`), or completion (`completed: boolean`) |
-| `DELETE` | `/api/tasks/:id` | Delete a task (with ownership verification) |
-| `DELETE` | `/api/tasks/completed/clear` | Clear all completed tasks for logged-in user |
+|---|---|---|
+| `GET` | `/api/health` | Check API health |
+| `POST` | `/api/auth/signup` | Register a user |
+| `POST` | `/api/auth/login` | Authenticate and obtain a JWT |
+| `GET` | `/api/auth/me` | Get the current user profile |
+| `GET` | `/api/tasks` | List tasks with supported filters |
+| `POST` | `/api/tasks` | Create a task |
+| `PUT` | `/api/tasks/:id` | Update task fields or status |
+| `DELETE` | `/api/tasks/:id` | Delete a task |
+| `DELETE` | `/api/tasks/completed/clear` | Clear completed tasks |
+
+### Supported task query parameters
+
+- `status`: `all`, `pending`, `completed`, `todo`, `in_progress`
+- `search`: search tasks
+- `sort`: `due_date`, `priority`, `newest`
 
 ---
 
-## 🖥️ How to Run in Visual Studio Code (VS Code)
+## 🖥️ Run in Visual Studio Code
 
-### Step 1: Open the Project in VS Code
-1. Launch **Visual Studio Code**.
-2. Go to **File** > **Open Folder...** (or press `Ctrl + K, Ctrl + O`).
-3. Select the `TaskBoard` folder.
+### 1. Open the project
 
----
+Open the `TaskBoard` folder in VS Code.
 
-### Step 2: Open the Integrated Terminal
-- Press **`Ctrl + \``** (backtick) or select **Terminal** > **New Terminal** from the top menu.
+### 2. Start the backend
 
----
+Open a terminal:
 
-### Step 3: Run the Development Servers
-You can run both servers side-by-side using VS Code's **Split Terminal** feature:
-
-#### Terminal 1 — Start Backend Server:
 ```bash
 cd backend
+npm install
 npm run dev
 ```
-*(On Windows PowerShell, if you see a script execution policy notice, use `npm.cmd run dev`)*
-> 🚀 You will see: `TaskBoard REST API server listening on http://localhost:5000`
 
-#### Terminal 2 — Start Frontend Server:
-1. Click the **Split Terminal** button (`Ctrl + Shift + 5` or the ◫ icon in the top-right corner of the terminal pane).
-2. Run:
+Expected local API address:
+
+`http://localhost:5000`
+
+### 3. Start the frontend
+
+Open a second terminal:
+
 ```bash
 cd frontend
+npm install
 npm run dev
 ```
-*(Or `npm.cmd run dev` on Windows PowerShell)*
-> ⚡ You will see: `Local: http://localhost:3000/`
+
+Expected local frontend address:
+
+`http://localhost:3000`
+
+### 4. Log in
+
+Open `http://localhost:3000` in your browser and use the demo login option.
 
 ---
 
-### Step 4: Open the App & Test
-1. Hold `Ctrl` and click **`http://localhost:3000`** in the terminal (or open it in your browser).
-2. The 3D TaskBoard app will load.
-3. Click the **"Fill Demo Login"** button or enter:
-   - **Email**: `demo@taskboard.com`
-   - **Password**: `Demo@123`
-4. Click **Log in** to explore your pre-seeded 3D tasks!
-
----
-
-### 💡 Alternative: Run via VS Code Tasks (Automated)
-This repository includes pre-configured `.vscode` tasks:
-1. Press `Ctrl + Shift + P` and type `Tasks: Run Task`.
-2. Select **`Start Backend`** to start the API in the background.
-3. Select **`Start Frontend`** to start Vite in the background.
-4. Select **`Run Backend Tests`** (`Ctrl + Shift + T` or test menu) to run the 16 automated test suites anytime.
-
----
-
-### 🐞 Debugging with VS Code
-1. Click the **Run and Debug** tab on the left sidebar (or press `Ctrl + Shift + D`).
-2. Select **"Debug Backend API"** from the dropdown at the top.
-3. Press **`F5`** or click the green Play button.
-4. Set breakpoints directly in [taskController.js](file:///c:/Users/dhanush%20gopi/Downloads/TaskBoard/backend/src/controllers/taskController.js) or [authController.js](file:///c:/Users/dhanush%20gopi/Downloads/TaskBoard/backend/src/controllers/authController.js) to debug live API calls!
-
----
-
-## 💻 How to Run Locally (Command Line)
+## 💻 Run Locally from the Command Line
 
 ### Prerequisites
-- Node.js v18+ or v20+ or v22+
+
+- Node.js 18 or later
 - npm
+- Git
 
-### 1. Clone & Install
+### 1. Clone the repository
+
+Replace the placeholder with your actual GitHub repository URL.
+
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/TaskBoard.git
+git clone https://github.com/<your-username>/TaskBoard.git
 cd TaskBoard
+```
 
-# Install backend dependencies
+### 2. Install dependencies
+
+```bash
 cd backend
 npm install
 
-# Install frontend dependencies
 cd ../frontend
 npm install
+
 cd ..
 ```
 
-### 2. Configure Environment Variables
-In `backend/.env` (pre-configured defaults work out of the box):
+### 3. Configure environment variables
+
+Create or update `backend/.env`:
+
 ```env
 PORT=5000
 NODE_ENV=development
-JWT_SECRET=super-secret-taskboard-key-change-in-production-2026
-# Optional: set DATABASE_URL to connect to PostgreSQL (e.g. Neon/Supabase)
-# DATABASE_URL=postgresql://user:pass@host:5432/dbname?sslmode=require
+JWT_SECRET=replace-with-a-long-random-secret
+
+# Optional: configure PostgreSQL
+# DATABASE_URL=postgresql://user:password@host:5432/database?sslmode=require
 ```
 
-### 3. Run Development Servers
+Use a unique, securely generated `JWT_SECRET` in production. Never commit real secrets to GitHub.
 
-**Option A — Run Backend and Frontend separately:**
+### 4. Run both servers
+
+Backend terminal:
+
 ```bash
-# Terminal 1: Start Backend API (runs on port 5000)
 cd backend
 npm run dev
+```
 
-# Terminal 2: Start Frontend (runs on port 3000)
+Frontend terminal:
+
+```bash
 cd frontend
 npm run dev
 ```
-Open **`http://localhost:3000`** in your browser.
 
-**Option B — Unified Single-Command Run:**
+Open `http://localhost:3000`.
+
+### Alternative: Unified Run
+
+If the root project scripts support a unified build and start:
+
 ```bash
-# Build frontend and start the Express server which serves both API and 3D UI
 npm run build
 npm start
 ```
-Open **`http://localhost:5000`** in your browser.
+
+The documented unified setup serves the frontend and API from port `5000`.
 
 ---
 
-## 🧪 Running Automated Tests
+## 🧪 Automated Tests
 
-Run the test suite with Jest and Supertest:
+Run the backend tests:
+
 ```bash
 cd backend
 npm test
 ```
 
-### Test Coverage Highlights:
-- ✅ **Health Check**: verifies `/api/health` returns `200 OK`
-- ✅ **Password Validation**: ensures passwords shorter than 8 characters are rejected
-- ✅ **Name & Email Validation**: verifies required fields and email uniqueness
-- ✅ **Demo User Seed Verification**: confirms `demo@taskboard.com` / `Demo@123` works out of the box
-- ✅ **Authentication Guard**: verifies unauthorized requests to `/api/tasks` return `401`
-- ✅ **Empty Title Rejection**: verifies server-side validation rejects empty titles
-- ✅ **User Isolation**: guarantees User A cannot view, update, or delete User B's tasks
-- ✅ **Status Toggling & Strikethrough**: verifies real-time count updates (Total, Pending, Completed)
-- ✅ **Filtering & Deletion**: tests status filtering and cascading deletions
+The README documents a Jest and Supertest suite covering:
+
+- Health check responses
+- Password validation
+- Name and email validation
+- Demo user seed verification
+- Authentication guards
+- Empty task-title rejection
+- User-level task isolation
+- Task status updates
+- Filtering and deletion
+
+The original project documentation reports **16 automated tests**. Run the suite to verify the current result.
 
 ---
 
 ## ☁️ Deployment Instructions
 
-> **⚠️ Note on Free Tier Cloud Hosting**: Free backend tiers (Render/Koyeb) put instances to sleep when idle. The very first request after an idle period may take 45–60 seconds to spin up.
+### Frontend — Vercel
 
-### Deploy Frontend to Vercel
-1. Push this repository to GitHub.
-2. Log in to [Vercel](https://vercel.com) and click **"Add New Project"**.
-3. Set **Root Directory** to `frontend`.
-4. Add environment variable:
-   - `VITE_API_URL`: Your live backend API URL (e.g., `https://taskboard-api.onrender.com`)
-5. Click **Deploy**.
+1. Push the repository to GitHub.
+2. Open [Vercel](https://vercel.com).
+3. Import the repository.
+4. Set the frontend root directory to `frontend`.
+5. Configure the environment variable:
 
-### Deploy Backend to Render
-1. Log in to [Render](https://render.com) and click **"New Web Service"**.
-2. Connect your GitHub repository.
-3. Configuration:
-   - **Root Directory**: `backend`
-   - **Environment**: `Node`
-   - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
-4. Add Environment Variables:
-   - `NODE_ENV`: `production`
-   - `JWT_SECRET`: (generate random 32+ character string)
-   - `DATABASE_URL`: (connection string from Neon / Supabase / Render PostgreSQL)
-5. Click **Create Web Service**.
-6. Verify deployment by visiting `https://your-api.onrender.com/api/health` (should return `"OK"`).
+   ```env
+   VITE_API_URL=https://your-api.onrender.com
+   ```
+
+6. Deploy and test the application.
+
+### Backend — Render
+
+1. Open [Render](https://render.com).
+2. Create a new Web Service and connect the repository.
+3. Set the root directory to `backend`.
+4. Configure the build command:
+
+   ```bash
+   npm install
+   ```
+
+5. Configure the start command:
+
+   ```bash
+   npm start
+   ```
+
+6. Set production environment variables:
+
+   ```env
+   NODE_ENV=production
+   JWT_SECRET=your-generated-secret
+   DATABASE_URL=your-postgresql-connection-string
+   ```
+
+7. Deploy and verify the API health endpoint:
+
+   `https://your-api.onrender.com/api/health`
+
+> **Hosting note:** Free cloud services may sleep when idle, causing the first request after inactivity to take longer.
 
 ---
 
 ## 🤖 AI Usage Note
 
-AI tools were leveraged for:
-1. Translating the assignment specifications and visual mockups into a cohesive, responsive React + Tailwind CSS layout.
-2. Generating the WebGL Three.js interactive math for the ambient 3D geometric background and 3D card tilt matrices.
-3. Structuring the automated test coverage suite using Jest and Supertest.
+AI tools were used to assist with:
+
+1. Translating assignment specifications and visual mockups into a responsive React and Tailwind CSS interface.
+2. Developing the interactive Three.js background and 3D card-tilt effects.
+3. Structuring automated tests with Jest and Supertest.
 
 ---
 
-## 💡 Ready for the 20-Minute Follow-up Call
+## 💡 Follow-Up Live Coding: Adding a Category Field
 
-The codebase is cleanly organized for the follow-up live coding walkthrough (e.g., adding a new **`Category`** field):
-1. **Database Schema** (`backend/src/db.js`): add `category VARCHAR(50) DEFAULT 'Work'` to table creation and queries.
-2. **Controller** (`backend/src/controllers/taskController.js`): accept `category` in `createTask` and `updateTask`.
-3. **Frontend Modal** (`frontend/src/components/TaskModal3D.jsx`): add a category dropdown or input pill.
-4. **Task Card** (`frontend/src/components/TaskItem3D.jsx`): render a category badge alongside priority.
+The original project notes identify these areas for extending tasks with a `Category` field:
 
+1. **Database:** Update `backend/src/db.js` to add the category field and handle it in relevant queries.
+2. **Controller:** Update `backend/src/controllers/taskController.js` to accept category during task creation and updates.
+3. **Task modal:** Update `frontend/src/components/TaskModal3D.jsx` with a category dropdown or input.
+4. **Task card:** Update `frontend/src/components/TaskItem3D.jsx` to display a category badge.
+
+Remember to update validation, database migrations or table creation logic, and tests as needed.
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&amp;color=0:0F172A,50:7C3AED,100:06B6D4&amp;height=4&amp;section=footer" alt="" width="100%" />
+</p>
+
+<p align="center">
+  <strong>✨ Organize. Focus. Complete. Repeat.</strong><br/>
+  Plan with clarity. Track your progress. Keep moving forward.
+</p>
