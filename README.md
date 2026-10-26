@@ -349,7 +349,7 @@ Explore the interface and key workflows of TaskBoard — 3D Spatial Task Manager
     </td>
     <td width="50%" align="center">
       <strong>📋 Kanban Board</strong><br/><br/>
-      <img src="screenshots/kanban-board.png" alt="TaskBoard Kanban board" width="100%"/><br/>
+      <img src="https://github.com/dhanushgopi2456/My-All-Project-Screenshots/blob/main/Screenshot%202026-10-26%20080415.png" alt="TaskBoard Kanban board" width="100%"/><br/>
       <sub>Organize work across To Do, In Progress, and Done.</sub>
     </td>
   </tr>
