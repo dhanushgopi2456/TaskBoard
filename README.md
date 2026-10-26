@@ -361,7 +361,7 @@ Explore the interface and key workflows of TaskBoard — 3D Spatial Task Manager
     </td>
     <td width="50%" align="center">
       <strong>✨ Task Management</strong><br/><br/>
-      <img src="screenshots/task-management.png" alt="TaskBoard task management interface" width="100%"/><br/>
+      <img src="https://github.com/dhanushgopi2456/My-All-Project-Screenshots/blob/main/Screenshot%202026-10-26%20080619.png" alt="TaskBoard task management interface" width="100%"/><br/>
       <sub>Create, update, prioritize, and manage tasks.</sub>
     </td>
   </tr>
