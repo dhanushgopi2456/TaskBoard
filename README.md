@@ -336,7 +336,36 @@ The original project documentation reports **16 automated tests**. Run the suite
 ---
 
 <a id="screenshots"></a>
+## 📸 Screenshots
 
+Explore the interface and key workflows of TaskBoard — 3D Spatial Task Manager.
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <strong>🏠 Dashboard</strong><br/><br/>
+      <img src="screenshots/dashboard.png" alt="TaskBoard dashboard" width="100%"/><br/>
+      <sub>Overview of tasks, statistics, and productivity metrics.</sub>
+    </td>
+    <td width="50%" align="center">
+      <strong>📋 Kanban Board</strong><br/><br/>
+      <img src="screenshots/kanban-board.png" alt="TaskBoard Kanban board" width="100%"/><br/>
+      <sub>Organize work across To Do, In Progress, and Done.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <strong>📊 Analytics Dashboard</strong><br/><br/>
+      <img src="screenshots/analytics.png" alt="TaskBoard analytics dashboard" width="100%"/><br/>
+      <sub>Visualize task completion, priorities, and weekly workload.</sub>
+    </td>
+    <td width="50%" align="center">
+      <strong>✨ Task Management</strong><br/><br/>
+      <img src="screenshots/task-management.png" alt="TaskBoard task management interface" width="100%"/><br/>
+      <sub>Create, update, prioritize, and manage tasks.</sub>
+    </td>
+  </tr>
+</table>
 
 <a id="deployment"></a>
 ## ☁️ Deployment Instructions
