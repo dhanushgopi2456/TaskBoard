@@ -334,6 +334,10 @@ The documented Jest and Supertest suite covers:
 The original project documentation reports **16 automated tests**. Run the suite to verify the current result.
 
 ---
+
+<a id="screenshots"></a>
+
+
 <a id="deployment"></a>
 ## ☁️ Deployment Instructions
 
