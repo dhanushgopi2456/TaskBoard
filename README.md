@@ -356,7 +356,7 @@ Explore the interface and key workflows of TaskBoard — 3D Spatial Task Manager
   <tr>
     <td width="50%" align="center">
       <strong>📊 Analytics Dashboard</strong><br/><br/>
-      <img src="screenshots/analytics.png" alt="TaskBoard analytics dashboard" width="100%"/><br/>
+      <img src="https://github.com/dhanushgopi2456/My-All-Project-Screenshots/blob/main/Screenshot%202026-10-26%20080519.png" alt="TaskBoard analytics dashboard" width="100%"/><br/>
       <sub>Visualize task completion, priorities, and weekly workload.</sub>
     </td>
     <td width="50%" align="center">
