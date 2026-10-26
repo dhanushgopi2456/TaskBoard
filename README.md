@@ -43,6 +43,9 @@
  <a href="#run-locally">
   <img src="https://img.shields.io/badge/▶️_Run_Locally-16A34A?style=for-the-badge" alt="Run Locally"/>
  </a>
+ <a href="#screenshots">
+  <img src="https://img.shields.io/badge/📸_Screenshots-DB2777?style=for-the-badge" alt="Screenshots"/>
+</a>
   <a href="#deployment">
     <img src="https://img.shields.io/badge/Deployment-0F766E?style=for-the-badge" alt="Deployment"/>
   </a>
